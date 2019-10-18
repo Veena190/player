@@ -1,0 +1,15 @@
+<p>
+  player-form works!
+</p>
+<div>
+<h1>Add New Player </h1>
+    <div>
+        <form [formGroup]="playerForm" (ngSubmit)="saveP()"> <!--onsubmit="saveP(player)">-->
+            ID*: <input type="text" placeholder="ID" required formControlName="id" pattern="[0-9]+">
+            Name*: <input type="text" placeholder="Name" required formControlName="name">
+            <!--<input type="submit" value="Save">-->
+            <!--<button type = "submit" (click)="saveP(player)">Save</button>-->
+            <button type = "submit" [disabled]="!playerForm.valid">Save</button>
+        </form>
+    </div>
+</div>

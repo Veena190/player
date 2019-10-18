@@ -1,0 +1,34 @@
+<div>
+<div> 
+<h1>
+  {{team}} Team Plays Well!<br>
+</h1>
+    <h2>{{player.name | uppercase}} Details</h2>
+<div><span>ID: </span>{{player.id}}</div>
+<div><label>Name: <input [(ngModel)] = "player.name" placeholder="Name"/> </label></div>   
+</div>
+<div>
+<ul class="players">
+    <span>Static Local UI Data</span>
+    <li *ngFor="let p of players"><!-- [class.selected]="p === selectedPlayer" (click)="onSelect(p)">-->
+        <a routerLink="/detail/{{p.id}}">
+        <span class="team">{{p.name}}</span>
+        </a>
+    </li>
+</ul>
+<ul class="players">
+    <li *ngFor="let p of play"><!-- [class.selected]="p === selectedPlayer" (click)="onSelect(p)">-->
+        <a routerLink="/detail/{{p.id}}">
+        <span class="team">{{p.name}}</span>
+        </a>
+    </li>
+    <li>
+        <a routerLink="/form">
+        <span class="team">Add New Player</span>
+        </a>
+    </li>
+</ul>
+</div>
+   <!-- <app-player-detail [player]="selectedPlayer"></app-player-detail>-->
+
+</div>

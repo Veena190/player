@@ -1,0 +1,16 @@
+<p>
+  player-detail works!
+</p>
+
+<div *ngIf = "player">
+    <h2>{{player.name | uppercase}} Details</h2>
+<div><span>ID: </span>{{player.id}}</div>
+<div>
+  <label>Name:
+    <input [(ngModel)]="player.name" placeholder="Name"/>
+  </label>
+</div>
+    <button (click)="goBack()">Back</button>
+    <button (click)="editP(player)">Save</button>
+    <button (click)="delP(player.id)">Delete</button>
+</div>

@@ -1,0 +1,11 @@
+<p>
+  dashboard works!
+</p>
+<h3>Top Players</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let p of plays" class="col-1-4" routerLink="/detail/{{p.id}}">
+    <div class="module p">
+      <h4>{{p.name}}</h4>
+    </div>
+  </a>
+</div>
