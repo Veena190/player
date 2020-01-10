@@ -17,7 +17,8 @@ export class PlayerService {
 
  player: Player = {
     id: 1,
-    name: 'Sharma'
+    name: 'Sharma',
+    image: ' '
  };
  private pUrl: string; //'getP';  // URL to web api
  private pIdUrl: string; //'getPId';  // URL to web api
@@ -76,8 +77,9 @@ export class PlayerService {
   
 editP(player: Player): Observable<any> {
    const pUrl = environment.APP_PLAY+'editP'; //'editP';  // URL to web api
-   const headers = new Headers({ 'Content-Type': 'application/json' });
+   const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
    // const body = JSON.stringify(player);// when json need to converted to string
+
    console.log(player);
    return this.http.post(pUrl, player ).pipe(
    tap(_=> console.log(`Updated Player id=${player.id}`)),
@@ -130,6 +132,17 @@ private handleError<T> (operation = 'operation', result?: T) {
     // Let the app keep running by returning an empty result.
     return of(result as T);
   };
+}
+
+ saveOS(form: FormData){
+    const pUrl = environment.APP_PLAY+'editP'; 
+    const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
+    console.log('Name:  '+form.get.name);
+    return this.http.post(pUrl, form ).pipe(
+    tap(_ => console.log(`Fetched Player id=${form}`)),
+    catchError(this.handleError<Player>(`getP id=${form}`))
+  );
+
 }
 
 }

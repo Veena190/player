@@ -46,6 +46,7 @@ public class ServiceImpl implements Services {
 		PlayersDTO dto = new PlayersDTO();
 		dto.setId(vo.getId());
 		dto.setName(vo.getName());
+		dto.setImage(vo.getImage());
 		Optional<PlayersDTO> d = playersDAO.findById(dto.getId());
 		if(d.isPresent()) {
 			playersDAO.save(dto);

@@ -14,7 +14,8 @@ export class PlayersComponent implements OnInit {
 
  player: Player = {
     id: 1,
-    name: 'Sharma'
+    name: 'Sharma',
+    image: ' '
  };
  
  players = PLAYERS;

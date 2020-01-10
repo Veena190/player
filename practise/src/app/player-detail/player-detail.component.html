@@ -8,6 +8,9 @@
 <div>
   <label>Name:
     <input [(ngModel)]="player.name" placeholder="Name"/>
+    <img [src]="url" style="height: 100px;width: 100px;">
+    <input type="file" [(ngModel)]="player.image" (change)="onSelectFile($event)" />
+    
   </label>
 </div>
     <button (click)="goBack()">Back</button>

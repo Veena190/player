@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.service.Services;
 import com.example.util.PlayersVO;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200",allowedHeaders="*")
+@CrossOrigin//(origins="http://localhost:4200",allowedHeaders="*")
 public class Controllers {
 	
 	@Autowired
@@ -41,7 +42,7 @@ public class Controllers {
 	
 	@PostMapping(path = "/editP", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public String editP( @RequestBody PlayersVO vo) {
+	public String editP( @RequestParam(value = "file") MultipartFile[] file, @RequestParam(value = "vo") PlayersVO vo) {
 		String s = ser.editP(vo);
 		return s;
 	}

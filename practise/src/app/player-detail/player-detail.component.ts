@@ -13,6 +13,7 @@ import { Player } from '../players/player';
 export class PlayerDetailComponent implements OnInit {
 @Input() player: Player;
 res: Response;
+url: any;
   constructor(
     private route: ActivatedRoute,
     private playerService: PlayerService,
@@ -36,7 +37,7 @@ getPlay(): void {
   editP(player: Player): void {
     this.playerService.editP(this.player).subscribe(res => {
     console.log(this.res);
-    this.res = "HI...";
+    //this.res = "HI...";
     console.log(this.res);
     //if(this.res==='Success')
       this.router.navigate(['/players']);
@@ -49,4 +50,16 @@ getPlay(): void {
     this.router.navigate(['/players']);
   }
 
+  
+onSelectFile(event: any) { // called each time file input changes
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      }
+    }
+}
 }
