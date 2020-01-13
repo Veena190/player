@@ -55,7 +55,7 @@ public class ChatController {
 	public List<Chat> getAppChats() throws IOException, ParseException {
 
 		List<String> fileLines = Files.readAllLines(Paths.get("D:\\Docs\\Chat1.txt"), StandardCharsets.UTF_8);
-
+		fileLines.removeAll(Arrays.asList("", null));
 		Chat chats = null;
 		List<Text> texts = null;
 		Set<Chat> chatList = new HashSet<>();
@@ -64,6 +64,7 @@ public class ChatController {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/d/yy");
 
 			String line1 = fileLines.get(i);
+			line1 = line1.trim();
 			String today1 = line1.substring(0, line1.indexOf(','));
 			LocalDate localDate1 = LocalDate.parse(today1, formatter);
 			if (i == 0) {
@@ -75,6 +76,7 @@ public class ChatController {
 
 			else if (i != 0 || i > 0) {
 				String line0 = fileLines.get(i - 1);
+				line0 = line0.trim();
 				String today0 = line0.substring(0, line0.indexOf(','));
 				LocalDate localDate0 = LocalDate.parse(today0, formatter);
 				if (localDate0.isBefore(localDate1)) {
@@ -85,7 +87,7 @@ public class ChatController {
 				}
 			}
 			String line = fileLines.get(i);
-
+			line = line.trim();
 			String today = line.substring(0, line.indexOf(','));
 			String time = line.substring(line.indexOf(',') + 1, line.indexOf('-') - 1);
 			String name = line.substring(line.indexOf('-') + 1, line.indexOf(": "));
